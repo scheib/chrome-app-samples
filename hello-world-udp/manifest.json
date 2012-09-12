@@ -11,5 +11,13 @@
     "background": {
       "scripts": ["main.js"]
     }
-  }
+  },
+  "permissions": [
+    {
+      "socket": [
+        "udp-bind",
+        "udp-send-to"
+      ]
+    }
+  ]
 }
