@@ -3,9 +3,9 @@ window.addEventListener('load', function() {
 
   chrome.socket.create('udp', {}, function(createInfo) {
   	bound_socket = createInfo['socketId'];
-    chrome.socket.bind(bound_socket, "0.0.0.0", 0, function(result) {
+    chrome.socket.bind(bound_socket, "0.0.0.0", 535353, function(result) {
       if (result) {
-        console.warn('could not bind udp socket', address);
+        output("Could not bind udp socket " + bound_socket + " result " + result);
         callback(null);
       } else {
         output("Bound to " + bound_socket);
