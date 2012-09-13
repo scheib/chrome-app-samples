@@ -14,7 +14,6 @@ window.addEventListener('load', function() {
   });
 
   function queue_recvFrom() {
-    console.log(123);
     chrome.socket.recvFrom(bound_socket, data_received);
   };
   function data_received(info) {
