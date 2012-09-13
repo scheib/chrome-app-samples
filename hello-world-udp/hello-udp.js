@@ -14,7 +14,7 @@ window.addEventListener('load', function() {
     });
   });
 
-  // Development hack --- kill off all sockets!
+  // Development hack --- kill off all sockets on any key press to allow reload.
   document.body.onkeydown = function (e) { 
     output("chrome.socket.destroy(bound_socket);");
     chrome.socket.destroy(bound_socket);
