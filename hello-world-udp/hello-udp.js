@@ -6,20 +6,23 @@ window.addEventListener('load', function() {
     chrome.socket.bind(bound_socket, "0.0.0.0", 535353, function(result) {
       if (result) {
         output("Could not bind udp socket " + bound_socket + " result " + result);
-        callback(null);
       } else {
         output("Bound to " + bound_socket);
+        queue_recvFrom();
       }
     });
   });
 
-  setInterval(tick, 250);
-  function tick() {
-  	chrome.socket.recvFrom(bound_socket, function(info) {
-  		if (info.data.byteLength)
-  			output("received: " + info.data.byteLength + " " + info.data);
-  	});
+  function queue_recvFrom() {
+    console.log(123);
+    chrome.socket.recvFrom(bound_socket, data_received);
   };
+  function data_received(info) {
+    if (info.data.byteLength)
+      output("received: " + info.data.byteLength + " " + info.data);
+    queue_recvFrom();
+  };
+
 });
 
 function output(innerHTML) {
