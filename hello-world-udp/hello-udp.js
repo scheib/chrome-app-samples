@@ -12,17 +12,16 @@ window.addEventListener('load', function() {
       }
     });
   });
-
-  function queue_recvFrom() {
-    chrome.socket.recvFrom(bound_socket, data_received);
-  };
-  function data_received(info) {
-    if (info.data.byteLength)
-      output("received: " + info.data.byteLength + " " + info.data);
-    queue_recvFrom();
-  };
-
 });
+
+function queue_recvFrom() {
+  chrome.socket.recvFrom(bound_socket, data_received);
+};
+function data_received(info) {
+  if (info.data.byteLength)
+    output("received: " + info.data.byteLength + " " + info.data);
+  queue_recvFrom();
+};
 
 function output(innerHTML) {
   output_ul = document.getElementById("output");
