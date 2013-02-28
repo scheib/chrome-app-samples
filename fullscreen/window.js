@@ -1,3 +1,6 @@
+// Variables
+var hiddenWindow = null;
+
 // Log events:
 
 document.onwebkitfullscreenchange = function () {
@@ -10,13 +13,36 @@ document.onwebkitfullscreenerror = function () {
 
 // Button handlers:
 
-document.getElementById('enter').addEventListener('click', function(e) {
+document.getElementById('enter').onclick = function(e) {
   document.body.webkitRequestFullscreen();
-});
+};
 
-document.getElementById('exit').addEventListener('click', function(e) {
+document.getElementById('exit').onclick = function(e) {
   document.webkitExitFullscreen();
-});
+};
+
+document.getElementById('newWindow').onclick = function(e) {
+  chrome.app.window.create('window.html', { state: 'normal'});
+};
+
+document.getElementById('newWindowFullscreen').onclick = function(e) {
+  chrome.app.window.create('window.html', { state: 'fullscreen'});
+};
+
+document.getElementById('newWindowFullscreenHidden').onclick = function(e) {
+  chrome.app.window.create('window.html', { state: 'fullscreen', hidden: true},
+    function (createdWindow) {
+      hiddenWindow = createdWindow;
+    }
+  );
+};
+
+document.getElementById('showHidden').onclick = function(e) {
+  if (hiddenWindow) {
+    hiddenWindow.show();
+  }
+};
+
 
 // Attempt fullscreen on window creation.
 // It will fail, but hopefully some day it won't:
