@@ -43,6 +43,22 @@ document.getElementById('showHidden').onclick = function(e) {
   }
 };
 
+document.getElementById('fullscreen').onclick = function(e) {
+  chrome.app.window.current().fullscreen();
+};
+
+document.getElementById('maximize').onclick = function(e) {
+  chrome.app.window.current().maximize();
+};
+
+document.getElementById('minimize').onclick = function(e) {
+  chrome.app.window.current().minimize();
+};
+
+document.getElementById('restore').onclick = function(e) {
+  chrome.app.window.current().restore();
+};
+
 
 // Attempt fullscreen on window creation.
 // It will fail, but hopefully some day it won't:
