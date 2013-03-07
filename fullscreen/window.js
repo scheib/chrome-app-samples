@@ -13,23 +13,23 @@ document.onwebkitfullscreenerror = function () {
 
 // Button handlers:
 
-document.getElementById('enter').onclick = function(e) {
+document.querySelector('#enter').onclick = function(e) {
   document.body.webkitRequestFullscreen();
 };
 
-document.getElementById('exit').onclick = function(e) {
+document.querySelector('#exit').onclick = function(e) {
   document.webkitExitFullscreen();
 };
 
-document.getElementById('newWindow').onclick = function(e) {
+document.querySelector('#newWindow').onclick = function(e) {
   chrome.app.window.create('window.html', { state: 'normal'});
 };
 
-document.getElementById('newWindowFullscreen').onclick = function(e) {
+document.querySelector('#newWindowFullscreen').onclick = function(e) {
   chrome.app.window.create('window.html', { state: 'fullscreen'});
 };
 
-document.getElementById('newWindowFullscreenHidden').onclick = function(e) {
+document.querySelector('#newWindowFullscreenHidden').onclick = function(e) {
   chrome.app.window.create('window.html', { state: 'fullscreen', hidden: true},
     function (createdWindow) {
       hiddenWindow = createdWindow;
@@ -37,27 +37,52 @@ document.getElementById('newWindowFullscreenHidden').onclick = function(e) {
   );
 };
 
-document.getElementById('showHidden').onclick = function(e) {
+document.querySelector('#showHidden').onclick = function(e) {
   if (hiddenWindow) {
     hiddenWindow.show();
   }
 };
 
-document.getElementById('fullscreen').onclick = function(e) {
+document.querySelector('#fullscreen').onclick = function(e) {
   chrome.app.window.current().fullscreen();
 };
 
-document.getElementById('maximize').onclick = function(e) {
+document.querySelector('#maximize').onclick = function(e) {
   chrome.app.window.current().maximize();
 };
 
-document.getElementById('minimize').onclick = function(e) {
+document.querySelector('#minimize').onclick = function(e) {
   chrome.app.window.current().minimize();
 };
 
-document.getElementById('restore').onclick = function(e) {
+document.querySelector('#restore').onclick = function(e) {
   chrome.app.window.current().restore();
 };
+
+document.querySelector('#delay-fullscreen').onclick = function(e) {
+  setTimeout(chrome.app.window.current().fullscreen, 3000);
+};
+
+document.querySelector('#delay-maximize').onclick = function(e) {
+  setTimeout(chrome.app.window.current().maximize, 3000);
+};
+
+document.querySelector('#delay-minimize').onclick = function(e) {
+  setTimeout(chrome.app.window.current().minimize, 3000);
+};
+
+document.querySelector('#delay-restore').onclick = function(e) {
+  setTimeout(chrome.app.window.current().restore, 3000);
+};
+
+document.querySelector('#delay-hide').onclick = function(e) {
+  setTimeout(chrome.app.window.current().hide, 3000);
+};
+
+document.querySelector('#delay-show').onclick = function(e) {
+  setTimeout(chrome.app.window.current().show, 3000);
+};
+
 
 
 // Attempt fullscreen on window creation.
