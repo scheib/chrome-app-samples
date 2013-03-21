@@ -1,5 +1,6 @@
 // Variables
-var hiddenWindow = null;
+var commandsDelay = 3000;
+var hiddenWindowDelay = 3000;
 
 // Log events:
 
@@ -32,15 +33,9 @@ document.querySelector('#newWindowFullscreen').onclick = function(e) {
 document.querySelector('#newWindowFullscreenHidden').onclick = function(e) {
   chrome.app.window.create('window.html', { state: 'fullscreen', hidden: true},
     function (createdWindow) {
-      hiddenWindow = createdWindow;
+      setTimeout(function () { createdWindow.show(); }, hiddenWindowDelay);
     }
   );
-};
-
-document.querySelector('#showHidden').onclick = function(e) {
-  if (hiddenWindow) {
-    hiddenWindow.show();
-  }
 };
 
 document.querySelector('#fullscreen').onclick = function(e) {
@@ -60,27 +55,27 @@ document.querySelector('#restore').onclick = function(e) {
 };
 
 document.querySelector('#delay-fullscreen').onclick = function(e) {
-  setTimeout(chrome.app.window.current().fullscreen, 3000);
+  setTimeout(chrome.app.window.current().fullscreen, commandsDelay);
 };
 
 document.querySelector('#delay-maximize').onclick = function(e) {
-  setTimeout(chrome.app.window.current().maximize, 3000);
+  setTimeout(chrome.app.window.current().maximize, commandsDelay);
 };
 
 document.querySelector('#delay-minimize').onclick = function(e) {
-  setTimeout(chrome.app.window.current().minimize, 3000);
+  setTimeout(chrome.app.window.current().minimize, commandsDelay);
 };
 
 document.querySelector('#delay-restore').onclick = function(e) {
-  setTimeout(chrome.app.window.current().restore, 3000);
+  setTimeout(chrome.app.window.current().restore, commandsDelay);
 };
 
 document.querySelector('#delay-hide').onclick = function(e) {
-  setTimeout(chrome.app.window.current().hide, 3000);
+  setTimeout(chrome.app.window.current().hide, commandsDelay);
 };
 
 document.querySelector('#delay-show').onclick = function(e) {
-  setTimeout(chrome.app.window.current().show, 3000);
+  setTimeout(chrome.app.window.current().show, commandsDelay);
 };
 
 
