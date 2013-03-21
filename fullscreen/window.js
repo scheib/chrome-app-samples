@@ -41,22 +41,6 @@ $('#newWindowFullscreenHidden').onclick = function(e) {
   );
 };
 
-$('#fullscreen').onclick = function(e) {
-  chrome.app.window.current().fullscreen();
-};
-
-$('#maximize').onclick = function(e) {
-  chrome.app.window.current().maximize();
-};
-
-$('#minimize').onclick = function(e) {
-  chrome.app.window.current().minimize();
-};
-
-$('#restore').onclick = function(e) {
-  chrome.app.window.current().restore();
-};
-
 $('#delay-fullscreen').onclick = function(e) {
   setTimeout(chrome.app.window.current().fullscreen, $('#delay-slider').value);
 };
