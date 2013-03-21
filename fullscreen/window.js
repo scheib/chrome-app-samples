@@ -81,7 +81,12 @@ $('#delay-show').onclick = function(e) {
   setTimeout(chrome.app.window.current().show, $('#delay-slider').value);
 };
 
+updateDelaySiderText = function () {
+  $('#delay-label').innerText = "Delay " + $('#delay-slider').value / 1000 + " seconds:";
+}
 
+$('#delay-slider').onchange = updateDelaySiderText;
+updateDelaySiderText();  // Initial text update.
 
 // Attempt fullscreen on window creation.
 // It will fail, but hopefully some day it won't:
