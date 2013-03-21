@@ -17,23 +17,23 @@ document.onwebkitfullscreenerror = function () {
 
 // Button handlers:
 
-document.querySelector('#enter').onclick = function(e) {
+$('#enter').onclick = function(e) {
   document.body.webkitRequestFullscreen();
 };
 
-document.querySelector('#exit').onclick = function(e) {
+$('#exit').onclick = function(e) {
   document.webkitExitFullscreen();
 };
 
-document.querySelector('#newWindow').onclick = function(e) {
+$('#newWindow').onclick = function(e) {
   chrome.app.window.create('window.html', { state: 'normal'});
 };
 
-document.querySelector('#newWindowFullscreen').onclick = function(e) {
+$('#newWindowFullscreen').onclick = function(e) {
   chrome.app.window.create('window.html', { state: 'fullscreen'});
 };
 
-document.querySelector('#newWindowFullscreenHidden').onclick = function(e) {
+$('#newWindowFullscreenHidden').onclick = function(e) {
   chrome.app.window.create('window.html', { state: 'fullscreen', hidden: true},
     function (createdWindow) {
       setTimeout(function () { createdWindow.show(); }, hiddenWindowDelay);
@@ -41,43 +41,43 @@ document.querySelector('#newWindowFullscreenHidden').onclick = function(e) {
   );
 };
 
-document.querySelector('#fullscreen').onclick = function(e) {
+$('#fullscreen').onclick = function(e) {
   chrome.app.window.current().fullscreen();
 };
 
-document.querySelector('#maximize').onclick = function(e) {
+$('#maximize').onclick = function(e) {
   chrome.app.window.current().maximize();
 };
 
-document.querySelector('#minimize').onclick = function(e) {
+$('#minimize').onclick = function(e) {
   chrome.app.window.current().minimize();
 };
 
-document.querySelector('#restore').onclick = function(e) {
+$('#restore').onclick = function(e) {
   chrome.app.window.current().restore();
 };
 
-document.querySelector('#delay-fullscreen').onclick = function(e) {
+$('#delay-fullscreen').onclick = function(e) {
   setTimeout(chrome.app.window.current().fullscreen, $('#delay-slider').value);
 };
 
-document.querySelector('#delay-maximize').onclick = function(e) {
+$('#delay-maximize').onclick = function(e) {
   setTimeout(chrome.app.window.current().maximize, $('#delay-slider').value);
 };
 
-document.querySelector('#delay-minimize').onclick = function(e) {
+$('#delay-minimize').onclick = function(e) {
   setTimeout(chrome.app.window.current().minimize, $('#delay-slider').value);
 };
 
-document.querySelector('#delay-restore').onclick = function(e) {
+$('#delay-restore').onclick = function(e) {
   setTimeout(chrome.app.window.current().restore, $('#delay-slider').value);
 };
 
-document.querySelector('#delay-hide').onclick = function(e) {
+$('#delay-hide').onclick = function(e) {
   setTimeout(chrome.app.window.current().hide, $('#delay-slider').value);
 };
 
-document.querySelector('#delay-show').onclick = function(e) {
+$('#delay-show').onclick = function(e) {
   setTimeout(chrome.app.window.current().show, $('#delay-slider').value);
 };
 
