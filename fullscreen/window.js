@@ -1,6 +1,9 @@
-// Variables
-var commandsDelay = 3000;
+// Variables:
+
 var hiddenWindowDelay = 3000;
+
+// Helper functions
+$ = function(selector) { return document.querySelector(selector); }
 
 // Log events:
 
@@ -55,27 +58,27 @@ document.querySelector('#restore').onclick = function(e) {
 };
 
 document.querySelector('#delay-fullscreen').onclick = function(e) {
-  setTimeout(chrome.app.window.current().fullscreen, commandsDelay);
+  setTimeout(chrome.app.window.current().fullscreen, $('#delay-slider').value);
 };
 
 document.querySelector('#delay-maximize').onclick = function(e) {
-  setTimeout(chrome.app.window.current().maximize, commandsDelay);
+  setTimeout(chrome.app.window.current().maximize, $('#delay-slider').value);
 };
 
 document.querySelector('#delay-minimize').onclick = function(e) {
-  setTimeout(chrome.app.window.current().minimize, commandsDelay);
+  setTimeout(chrome.app.window.current().minimize, $('#delay-slider').value);
 };
 
 document.querySelector('#delay-restore').onclick = function(e) {
-  setTimeout(chrome.app.window.current().restore, commandsDelay);
+  setTimeout(chrome.app.window.current().restore, $('#delay-slider').value);
 };
 
 document.querySelector('#delay-hide').onclick = function(e) {
-  setTimeout(chrome.app.window.current().hide, commandsDelay);
+  setTimeout(chrome.app.window.current().hide, $('#delay-slider').value);
 };
 
 document.querySelector('#delay-show').onclick = function(e) {
-  setTimeout(chrome.app.window.current().show, commandsDelay);
+  setTimeout(chrome.app.window.current().show, $('#delay-slider').value);
 };
 
 
