@@ -1,18 +1,31 @@
 // Variables:
 
 var hiddenWindowDelay = 3000;
+var fullscreenchangeCount = 0;
+var fullscreenerrorCount = 0;
 
 // Helper functions
 $ = function(selector) { return document.querySelector(selector); }
 
 // Log events:
 
+var updateFulllscreenLabel = function updateFulllscreenLabel() {
+  $('#html-fullscreen-label').innerText =
+    fullscreenchangeCount + " onwebkitfullscreenchange, " +
+    fullscreenerrorCount + " onwebkitfullscreenerror";
+}
+updateFulllscreenLabel();  // Initial text update.
+
 document.onwebkitfullscreenchange = function () {
+  fullscreenchangeCount++;
   console.log("onwebkitfullscreenchange");
+  updateFulllscreenLabel();
 }
 
 document.onwebkitfullscreenerror = function () {
+  fullscreenerrorCount++;
   console.log("onwebkitfullscreenerror");
+  updateFulllscreenLabel();
 }
 
 // Button handlers:
@@ -65,7 +78,7 @@ $('#show').onclick = function(e) {
   setTimeout(chrome.app.window.current().show, $('#delay-slider').value);
 };
 
-updateDelaySiderText = function () {
+var updateDelaySiderText = function updateDelaySiderText() {
   $('#delay-label').innerText = $('#delay-slider').value / 1000 + " seconds.";
 }
 
