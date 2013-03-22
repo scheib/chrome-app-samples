@@ -18,7 +18,7 @@ document.onwebkitfullscreenerror = function () {
 // Button handlers:
 
 $('#enter').onclick = function(e) {
-  document.body.webkitRequestFullscreen();
+  $('#fullscreen-area').webkitRequestFullscreen();
 };
 
 $('#exit').onclick = function(e) {
@@ -66,7 +66,7 @@ $('#delay-show').onclick = function(e) {
 };
 
 updateDelaySiderText = function () {
-  $('#delay-label').innerText = "Delay " + $('#delay-slider').value / 1000 + " seconds:";
+  $('#delay-label').innerText = $('#delay-slider').value / 1000 + " seconds.";
 }
 
 $('#delay-slider').onchange = updateDelaySiderText;
