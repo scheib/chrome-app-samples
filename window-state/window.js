@@ -17,14 +17,6 @@ document.onwebkitfullscreenerror = function () {
 
 // Button handlers:
 
-$('#enter').onclick = function(e) {
-  $('#fullscreen-area').webkitRequestFullscreen();
-};
-
-$('#exit').onclick = function(e) {
-  document.webkitExitFullscreen();
-};
-
 $('#newWindow').onclick = function(e) {
   chrome.app.window.create('window.html', { state: 'normal'});
 };
@@ -41,27 +33,35 @@ $('#newWindowFullscreenHidden').onclick = function(e) {
   );
 };
 
-$('#delay-fullscreen').onclick = function(e) {
+$('#html-fullscreen-enter').onclick = function(e) {
+  $('#fullscreen-area').webkitRequestFullscreen();
+};
+
+$('#html-fullscreen-exit').onclick = function(e) {
+  document.webkitExitFullscreen();
+};
+
+$('#fullscreen').onclick = function(e) {
   setTimeout(chrome.app.window.current().fullscreen, $('#delay-slider').value);
 };
 
-$('#delay-maximize').onclick = function(e) {
+$('#maximize').onclick = function(e) {
   setTimeout(chrome.app.window.current().maximize, $('#delay-slider').value);
 };
 
-$('#delay-minimize').onclick = function(e) {
+$('#minimize').onclick = function(e) {
   setTimeout(chrome.app.window.current().minimize, $('#delay-slider').value);
 };
 
-$('#delay-restore').onclick = function(e) {
+$('#restore').onclick = function(e) {
   setTimeout(chrome.app.window.current().restore, $('#delay-slider').value);
 };
 
-$('#delay-hide').onclick = function(e) {
+$('#hide').onclick = function(e) {
   setTimeout(chrome.app.window.current().hide, $('#delay-slider').value);
 };
 
-$('#delay-show').onclick = function(e) {
+$('#show').onclick = function(e) {
   setTimeout(chrome.app.window.current().show, $('#delay-slider').value);
 };
 
@@ -71,9 +71,4 @@ updateDelaySiderText = function () {
 
 $('#delay-slider').onchange = updateDelaySiderText;
 updateDelaySiderText();  // Initial text update.
-
-// Attempt fullscreen on window creation.
-// It will fail, but hopefully some day it won't:
-// http://code.google.com/p/chromium/issues/detail?id=164624
-document.body.webkitRequestFullscreen();
 
