@@ -4,11 +4,12 @@
 </head>
 <body>
   <h1>Fullscreen sample</h1>
-  <button id="enter">Enter HTML5 Fullscreen</button><br>
+  <button id="enter">Enter HTML5 Fullscreen</button>
   <button id="exit">Exit HTML5 Fullscreen</button><br>
   <button id="newWindow">Create new window</button><br>
   <button id="newWindowFullscreen">Create new fullscreen window</button><br>
   <button id="newWindowFullscreenHidden">Create new fullscreen hidden window, then show after a delay.</button><br>
+  <p>Delayed actions:</p>
   <button id="delay-fullscreen">Fullscreen</button>
   <button id="delay-maximize">Maximize</button>
   <button id="delay-minimize">Minimize</button>
@@ -16,8 +17,8 @@
   <button id="delay-hide">Hide</button>
   <button id="delay-show">Show</button>
   <br>
-  <label id="delay-label" for="delay-slider">Delay:</label>
-  <input id="delay-slider" type ="range" min ="0000" max="10000" step="1000" value="0"/><br>
-  <script src="window.js"></script>
+  <span id="delay-label"></span>
+  <input id="delay-slider" type ="range" min ="0000" max="10000" step="1000" value="3000"/><br>
 </body>
+<script src="window.js"></script>
 </html>
